@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block services-nav-icon %}nav-icon-active{% endblock services-nav-icon  %}
+
+{% block content %}
+<section class="title-box py-4">
+    <div class="container">
+        <h3 class="text-white">Our Services</h3>
+    </div>
+</section>
+
+<div class="main bg-gray">
+    <div class="container py-4">
+        <div class="row justify-content-center mb-5">
+            {% for service in services %}
+            <div class="col-12 col-md-6 my-4">
+                <div class="p-3 p-md-5 bg-white shadow">
+                    <div class="row justify-content">
+                        <div class="col-2 ">
+                            <h1><i class="{{service.icon}} text-success"></i></h1>
+                        </div>
+                        <div class="col-10">
+                            <h4 class="pl-1 pt-2">{{service.name}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="service-text">
+                        <p>{{service.details|safe}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<section class="contact py-5">
+    <div class="py-5 px-4">
+        <center>
+            <h1 class="text-white" style="font-size: 4rem;">Get in Touch</h1>
+            <p class="lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            <a href="{% url 'contact' %}" class="btn btn-success font-weight-bold py-2 px-3">Contact Us</a>
+        </center>
+    </div>
+</section>
+{% endblock content %}

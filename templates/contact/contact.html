@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section class="title-box py-4">
+    <div class="container">
+        <h3 class="text-white">Contact Us</h3>
+    </div>
+</section>
+
+<section class="py-4 bg-gray">
+    <div class="container">
+        <div class="row justify-content-center my-1 my-md-5 mx-1 mx-md-auto">
+            <div class="col-12 col-md-11">
+
+                {% if messages %} {% for message in messages %}
+                <div class="my-3 alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %} {% endif %}
+
+                <div class="bg-white shadow">
+                    <div class="row justify-content-center">
+
+                        <div class="col-12 col-md-8 bg-white p-4 p-md-5">
+                            <h4 class="text-success">Send A Message</h4>
+
+                            <form method="POST" class="mt-4">
+                                {% csrf_token %}
+                                <div class="form-group ">
+                                    {{form.name|as_crispy_field}}
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        {{form.email|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        {{form.phone|as_crispy_field}}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{form.subject|as_crispy_field}}
+                                </div>
+
+                                <div class="form-group">
+                                    {{form.message|as_crispy_field}}
+                                </div>
+
+                                <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane mr-2"></i>
+                                    Submit</button>
+                            </form>
+
+                        </div>
+
+                        <div class="col-12 col-md-4 bg-darkblue p-4 p-md-5 text-white">
+                            <h4>Contact Info</h4>
+
+                            <div class="mt-2 mt-md-3">
+                                <p class="my-5"><i class="fa fa-phone-alt mr-3 text-success"></i>+233 541 607 208</p>
+                                <p class="my-5"><i class="fa fa-phone-alt mr-3 text-success"></i>+233 231 462 393</p>
+                                <p class="my-5"><i class="fa fa-envelope mr-3 text-success"></i>info@mfs.gmail.com</p>
+                                <p class="my-5"><i class="fa fa-map-marker-alt mr-4 text-success"></i>Accra, Ghana</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-darkgray py-5">
+    <div class="container px-0 px-md-auto">
+        <div class="blog-row mt-3 mx-md-5 px-md-3">
+            {% for post in blog %}
+            <div class="col-10 col-md-5 mb-3 blog-card-box mx-md-2">
+                <div class="blog-card bg-white shadow">
+                    <a href="{{post.get_absolute_url}}">
+                        <img src="{{MEDIA_URL}}{{post.image.url}}" alt="" class="blog-card-img img-fluid">
+                        <div class="p-3">
+                            <h5 class="text-dark pb-2" style="overflow:hidden;">{{post.title}}</h5>
+                            <small class="text-muted">{{post.date|date:"F d, Y"}}</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+{% endblock content %}

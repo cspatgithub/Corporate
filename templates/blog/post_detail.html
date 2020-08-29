@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block blog-nav-icon %}nav-icon-active{% endblock blog-nav-icon %}
+
+{% block content %}
+<div class="main">
+    <div class="container">
+        <div class="row justify-content-center my-5">
+            <div class="col-12 col-md-9">
+                <h1 class="post-title">{{post.title}}</h1>
+                <p class="text-muted">{{post.date|date:"F d, Y"}}</p>
+
+                <img src="{{MEDIA_URL}}{{post.image.url}}" alt="" class="post-img img-fluid shadow my-2">
+
+                <div class="post-text my-4">
+                    <p>{{post.text|safe}}</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <section class="bg-darkgray py-5">
+        <div class="container px-0 px-md-auto">
+            <div class="blog-row mt-3 mx-md-5 px-md-3">
+                {% for post in other_posts %}
+                <div class="col-10 col-md-5 mb-3 blog-card-box mx-md-2">
+                    <div class="blog-card bg-white shadow">
+                        <a href="{{post.get_absolute_url}}">
+                            <img src="{{MEDIA_URL}}{{post.image.url}}" alt="" class="blog-card-img img-fluid">
+                            <div class="p-3">
+                                <h5 class="text-dark pb-2" style="overflow:hidden;">{{post.title}}</h5>
+                                <small class="text-muted">{{post.date|date:"F d, Y"}}</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="contact py-5">
+    <div class="py-5 px-4">
+        <center>
+            <h1 class="text-white" style="font-size: 4rem;">Get in Touch</h1>
+            <p class="lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            <a href="{% url 'contact' %}" class="btn btn-success font-weight-bold py-2 px-3">Contact Us</a>
+        </center>
+    </div>
+</section>
+{% endblock content %}

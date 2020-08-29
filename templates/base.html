@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/regular.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/solid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/brands.min.css' %}">
+
+
+    <title>DJANGO | Corporate Site</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light sticky-top bg-white shadow">
+        <div class="container py-md-2">
+            <a href="" class="navbar-brand text-dark">
+                <h3>
+                    <i class="fas fa-chart-pie text-success mr-2"></i>MFS
+                </h3>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dropmenu"
+                aria-controls="dropmenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-align-justify"></i>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="dropmenu">
+                <div class="navbar-nav ml-auto pb-4 pb-md-auto">
+                    <a href="{% url 'home' %}"
+                        class="nav-item my-2 my-md-auto nav-link ml-md-4 {% block home-nav-icon %}{% endblock  %}">
+                        Home
+                    </a>
+                    <a href="{% url 'services' %}"
+                        class="nav-item my-2 my-md-auto nav-link ml-md-4 {% block services-nav-icon %}{% endblock  %}">
+                        Services
+                    </a>
+                    <a href="{% url 'blog' %}"
+                        class="nav-item my-2 my-md-auto nav-link ml-md-4 {% block blog-nav-icon %}{% endblock  %}">
+                        Blog
+                    </a>
+                    <a href="{% url 'about' %}"
+                        class="nav-item my-2 my-md-auto nav-link ml-md-4 {% block about-nav-icon %}{% endblock  %}">
+                        About
+                    </a>
+                    <form class="form-inline">
+                        <a href="{% url 'contact' %}"
+                            class="btn btn-success font-weight-bold ml-md-4 my-2 my-md-auto">Contact Us</a>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <section class="footer py-5">
+        <div class="container">
+            <div class="row justify-content py-3 py-md-4 px-3 ml-md-auto">
+                <div class="col-6 col-md-3 mb-4">
+                    <h5 class="mb-3">MENU</h5>
+                    <ul>
+                        <li>
+                            <a href="{% url 'home' %}" class="text-white">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'services' %}" class="text-white">Services</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'blog' %}" class="text-white">Blog</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'about' %}" class="text-white">About</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'contact' %}" class="text-white">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 mb-4">
+                    <h5 class="mb-3">ABOUT US</h5>
+                    <a href="{% url 'about' %}" class="text-white">
+                        <ul class="text-white">
+                            <li>Our Vision</li>
+                            <li>Our Approach</li>
+                            <li>Hierarchy</li>
+                        </ul>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 mb-4">
+                    <h5 class="mb-3">SERVICES</h5>
+                    <a href="{% url 'services' %}" class="text-white">
+                        <ul class="text-white">
+                            <li>Corporate Finance</li>
+                            <li>Business Growth</li>
+                            <li>Analytic Solutions</li>
+                            <li>Investments</li>
+                        </ul>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 mb-4">
+                    <h1>
+                        <i class="fas fa-chart-pie text-success mr-2"></i>MFS
+                    </h1>
+
+                    <div class="py-2 ml-4 pl-1">
+                        <a href="" class="text-success mr-2"><i class="fab fa-facebook-square"></i></a>
+                        <a href="" class="text-success mr-2"><i class="fab fa-instagram"></i></a>
+                        <a href="" class="text-success mr-2"><i class="fab fa-twitter"></i></a>
+
+                        <small class="d-block mt-2 text-white d-block">&copy; 2020, MFS.</small>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <script src="{% static 'fontawesome/js/fontawesome.min.js' %}"></script>
+    <script src="{% static 'fontawesome/js/brands.min.js' %}"></script>
+    <script src="{% static 'fontawesome/js/regular.min.js' %}"></script>
+    <script src="{% static 'fontawesome/js/solid.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
